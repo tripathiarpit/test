@@ -1,0 +1,88 @@
+<div style="margin-top: 20px;margin-left: 20px">
+  <app-page-title [pageTitle]="pageTitle"></app-page-title>
+</div>
+<div>
+
+  <mat-horizontal-stepper  linear #stepper class="add-clients-background">
+    <mat-step  [stepControl]="personalInfoFormGroup" state="person" errorMessage="Personal Information is required.">
+      <form [formGroup]="personalInfoFormGroup">
+        <ng-template matStepLabel>Personal Information </ng-template>
+        <div>
+          <mat-form-field>
+            <input matInput placeholder="Name" formControlName="name" required>
+            <mat-error *ngIf="personalInfoFormGroup.controls['name'].hasError('required') ">Enter Name.</mat-error>
+          </mat-form-field>
+        </div>
+      </form>
+      <button  name="next" mat-raised-button matStepperNext  [ngClass]="{'cta-button-primary': personalInfoFormGroup.valid, 'cta-button-invalid': !personalInfoFormGroup.valid}" style=" margin-left: 23px;">Next</button>
+    </mat-step>
+    <mat-step [stepControl]="personalAddressFormGroup" state="place" errorMessage="Address is required.">
+      <form [formGroup]="personalAddressFormGroup">
+        <ng-template matStepLabel>User Address</ng-template>
+        <div>
+          <mat-form-field class="fields-span mat-input">
+            <input matInput placeholder="Address1" formControlName="address1" required>
+            <mat-error *ngIf="personalAddressFormGroup.controls['address1'].hasError('required') ">Enter Address.</mat-error>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="fields-span mat-input">
+            <input matInput placeholder="Address2" formControlName="address2">
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="fields-span">
+            <input matInput placeholder="City" formControlName="city" required>
+            <mat-error *ngIf="personalAddressFormGroup.controls['city'].hasError('required') ">Enter City.</mat-error>
+          </mat-form-field>
+          <mat-form-field class="fields-span">
+            <input class="mat-input" matInput placeholder="State" formControlName="state" required>
+            <mat-error *ngIf="personalAddressFormGroup.controls['state'].hasError('required') ">Enter State.</mat-error>
+          </mat-form-field >
+
+          <mat-form-field class="fields-span">
+            <input matInput placeholder="Pin Code" formControlName="pin" required>
+            <mat-error *ngIf="personalAddressFormGroup.controls['pin'].hasError('required') ">Enter Pin Code.</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-form-field class="fields-span">
+            <input matInput placeholder="Phone" formControlName="phone" required>
+            <mat-error *ngIf="personalAddressFormGroup.controls['phone'].hasError('required') ">Enter Phone.</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="fields-span">
+            <input matInput placeholder="Mobile" formControlName="mobile">
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="fields-span mat-input-email">
+            <input matInput placeholder="Email" formControlName="email" required>
+            <mat-error *ngIf="personalAddressFormGroup.controls['email'].hasError('required') ">Enter Email.</mat-error>
+            <mat-error *ngIf="!personalAddressFormGroup.controls['email'].hasError('required') &&
+             personalAddressFormGroup.controls['email'].hasError('email')">Enter valid Email.</mat-error>
+          </mat-form-field>
+
+        </div>
+        <div style="margin-top: 20px">
+          <button  name="pre" mat-raised-button matStepperPrevious class="cta-button-primary">Previous</button>
+          <button name="next" mat-raised-button matStepperNext [ngClass]="{'cta-button-primary': personalAddressFormGroup.valid, 'cta-button-invalid': !personalAddressFormGroup.valid}" style=" margin-left: 23px;">Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step state="done">
+      <ng-template matStepLabel>Done</ng-template>
+      <div class="submit-div">
+        <h3> You are now done ,click on Submit to Create User</h3>
+        <div style="margin-top: 20px">
+          <button  name="pre" mat-raised-button matStepperPrevious class="cta-button-primary" >Back</button>
+          <button  name="pre" mat-raised-button matStepperPrevious class="cta-button-invalid" style=" margin-left: 23px;" (click)="stepper.reset()">Reset</button>
+          <button  name="pre" mat-raised-button  class="cta-button-primary" style=" margin-left: 23px;" >Submit</button>
+        </div>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+
+</div>

@@ -1,0 +1,40 @@
+<div style="margin-top: 20px;margin-left: 20px">
+  <app-page-title [pageTitle]="pageTitle"></app-page-title>
+</div>
+
+<div style="margin-left: 20px">
+  <form name="lookupClients" [formGroup]="lookupEventsForm" class="lookup-clients-background">
+    <div>
+      <div class="rule-value-container">
+        <mat-form-field>
+          <input matInput formControlName="byName"
+                      placeholder="Event Name"/>
+        </mat-form-field>
+      </div>
+      <div class="rule-value-container">
+        <mat-form-field>
+
+            <mat-select  placeholder="Event Type" formControlName="byType">
+              <mat-option>None</mat-option>
+              <mat-option value="Football">Football</mat-option>
+              <mat-option value="Cricket">Cricket</mat-option>
+              <mat-option value="Marathon">Marathon</mat-option>
+            </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="rule-value-container">
+        <mat-form-field>
+          <input matInput formControlName="byLocation"
+                 placeholder="Event Location"/>
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+  <div>
+  <button mat-raised-button (click)="searchClients()">Search</button>
+  </div>
+</div>
+<div *ngIf="tableData.length>0" class="table-div">
+  <h3 class="search-results-heading">Search Results</h3>
+<app-client-table [searchClientsResultsList]="tableData"></app-client-table>
+</div>

@@ -1,0 +1,25 @@
+.lookup-clients-background{
+  padding-top: 10px;
+  padding-left: 10px;
+  margin-left: 20px;
+  width: 50%;
+  border: 1px solid #DCC896;
+  background: snow;
+}
+.mat-raised-button {
+  margin-left: 20px;
+  margin-top: 20px;
+  background: cornflowerblue;
+  color: white;
+}
+.mat-raised-button:hover {
+  background: royalblue;
+  color: white;
+}
+.search-results-heading {
+  color: green;
+}
+.table-div {
+padding-left: 10px;
+  margin-left: 20px;
+}

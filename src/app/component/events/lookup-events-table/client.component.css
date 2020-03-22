@@ -1,0 +1,51 @@
+table {
+  display: table;
+  width:100%
+}
+.mat-header-row {
+  display: table-row;
+  vertical-align: middle;
+  text-align: center;
+  background: lavender;
+}
+.mat-row{
+  display: table-row;
+  vertical-align: middle;
+  text-align: center;
+  border-bottom: darkgoldenrod;
+  border-style: wave;
+  border-bottom-width: 4px;
+}
+
+.mat-header-cell {
+  display: table-cell;
+  height: 48px;
+  vertical-align: middle;
+   ext-align: center;
+  color: white;
+  padding-left: 10px;
+}
+.mat-cell{
+  overflow: hidden;
+  word-wrap: break-word;
+}
+.mat-header-row {
+  background: cornflowerblue;
+  color: white;
+  padding-left: 10px;
+}
+.mat-table {
+  background: lightyellow;
+}
+.mat-del-btn {
+  background: teal;
+  color: white;
+  margin-left:5px
+}
+.mat-edit-btn {
+  background: black;
+  color: white;
+}
+th.mat-header-cell {
+  text-align: center;
+}

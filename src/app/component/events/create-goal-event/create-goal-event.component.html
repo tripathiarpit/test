@@ -1,0 +1,93 @@
+<div style="margin-top: 20px;margin-left: 20px">
+  <app-page-title [pageTitle]="pageTitle"></app-page-title>
+</div>
+<div>
+
+  <mat-horizontal-stepper  linear #stepper class="add-clients-background">
+    <mat-step [stepControl]="eventInfoFormGroup" state="person" errorMessage="General Information is required.">
+      <form [formGroup]="eventInfoFormGroup">
+        <ng-template matStepLabel>General Information </ng-template>
+        <div>
+            <mat-form-field>
+                <textarea matInput placeholder="Event Description" formControlName="name" required></textarea>
+                <mat-error *ngIf="eventInfoFormGroup.controls['name'].hasError('required') ">Enter Event Description.</mat-error>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+
+              <mat-select  placeholder="Event Type" formControlName="eventType">
+                <mat-option>None</mat-option>
+                <mat-option value="Football">Football</mat-option>
+                <mat-option value="Cricket">Cricket</mat-option>
+                <mat-option value="Marathon">Marathon</mat-option>
+              </mat-select>
+              <mat-error *ngIf="eventInfoFormGroup.controls['eventType'].hasError('required') ">Select Event Type.</mat-error>
+            </mat-form-field>
+
+        </div>
+      </form>
+      <button name="next" mat-raised-button matStepperNext [ngClass]="{'cta-button-primary': eventInfoFormGroup.valid, 'cta-button-invalid': !eventInfoFormGroup.valid}" style=" margin-left: 23px;">Next</button>
+    </mat-step>
+    <mat-step [stepControl]="eventAddressFormGroup" state="place" errorMessage="Address is required.">
+      <form [formGroup]="eventAddressFormGroup">
+        <ng-template matStepLabel>Event Address</ng-template>
+        <div>
+          <mat-form-field class="fields-span mat-input">
+            <input matInput placeholder="Address1" formControlName="address1" required>
+            <mat-error *ngIf="eventAddressFormGroup.controls['address1'].hasError('required') ">Enter Address.</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-form-field class="fields-span">
+            <input matInput placeholder="City" formControlName="city" required>
+            <mat-error *ngIf="eventAddressFormGroup.controls['city'].hasError('required') ">Enter City.</mat-error>
+          </mat-form-field>
+
+
+          <mat-form-field class="fields-span">
+            <input matInput placeholder="Pin Code" formControlName="pin" required>
+            <mat-error *ngIf="eventAddressFormGroup.controls['pin'].hasError('required') ">Enter Pin Code.</mat-error>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field>
+            <input matInput [min]="minDate" [matDatepicker]="pickerStart" formControlName="sDate"  placeholder="Choose Start Date">
+            <mat-datepicker-toggle matSuffix [for]="pickerStart"></mat-datepicker-toggle>
+            <mat-datepicker #pickerStart></mat-datepicker>
+            <mat-error *ngIf="eventAddressFormGroup.controls['sDate'].hasError('required') ">Select Start Date</mat-error>
+          </mat-form-field>
+
+
+
+
+        <mat-form-field class="fields-span">
+          <input matInput  [min]="minDate" [matDatepicker]="pickerEnd" formControlName="eDate"  placeholder="Choose End Date">
+          <mat-datepicker-toggle  matSuffix [for]="pickerEnd"></mat-datepicker-toggle>
+          <mat-datepicker  #pickerEnd></mat-datepicker>
+          <mat-error *ngIf="eventAddressFormGroup.controls['eDate'].hasError('required') ">Select End Date</mat-error>
+        </mat-form-field>
+          <small style="color: red;font-min-size: x-small" *ngIf="eventAddressFormGroup.hasError('notValid')">
+           Start Date Should be Less Than End Date</small>
+        </div>
+        <button mat-button (click)="chckError()">XXXX</button>
+        <button name="next" mat-raised-button matStepperNext [ngClass]="{'cta-button-primary': eventAddressFormGroup.valid, 'cta-button-invalid': !eventAddressFormGroup.valid}" style=" margin-left: 23px;">Next</button>
+      {{eventAddressFormGroup.valid}}
+      </form>
+    </mat-step>
+
+    <mat-step state="done">
+      <ng-template matStepLabel>Done</ng-template>
+      <div class="submit-div">
+        <h3> You are now done ,click on Submit to Create Event</h3>
+        <div style="margin-top: 20px">
+          <button  name="pre" mat-raised-button matStepperPrevious class="cta-button-primary" >Back</button>
+          <button  name="pre" mat-raised-button matStepperPrevious class="cta-button-invalid" style=" margin-left: 23px;" (click)="stepper.reset()">Reset</button>
+          <button  name="pre" mat-raised-button  class="cta-button-primary" style=" margin-left: 23px;" >Submit</button>
+        </div>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+
+</div>
